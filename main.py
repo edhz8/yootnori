@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import time,os,requests
 import random
 driver=None
-play_time=0
+play_time=0 # 이벤트를 참여하고 몇분후에 컴퓨터를 종료할것인지 설정한다.
 def open_site():
     global driver
     options = Options()
@@ -12,14 +12,14 @@ def open_site():
     options.add_argument('--start-fullscreen')
     options.add_argument("disable-gpu")
     url="http://fifaonline4.nexon.com/main/index"
-    driver = webdriver.Chrome(executable_path='c:/Users/edhz8/OneDrive/바탕 화면/yootnori/chromedriver', chrome_options=options)
+    driver = webdriver.Chrome(executable_path='', chrome_options=options) #크롬드라이버의 위치를 저장해야한다.
     driver.get(url)
     time.sleep(random.random()+2)
     driver.execute_script("top.PS.nxlogin.showLoginLayer(); return false;")
 
 def log_in():
-    id='edhz8888@gmail.com'
-    pw='a123456789'
+    id='' #id 와 pw 입력.
+    pw=''
 
     driver.find_element_by_xpath('//*[@id="txtNexonID"]').send_keys(id)
     driver.find_element_by_xpath('//*[@id="txtPWD"]').send_keys(pw)
